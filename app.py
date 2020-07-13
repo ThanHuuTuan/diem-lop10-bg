@@ -14,10 +14,6 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
-if os.getenv("ENVIRONMENT") == "development":
-    path = "http://127.0.0.1:5000"
-else:
-    path = "https://diem-lop10-bg.herokuapp.com"
 
 class ReusableForm(Form):
     matruong = TextField('matruong:', validators=[validators.required()])
