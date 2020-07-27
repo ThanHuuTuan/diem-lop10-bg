@@ -51,7 +51,7 @@ def getdiem():
             for i in range(max_std):
                 try:
                     rr = requests.get(
-                        'http://bacgiang.edu.vn/ssearch.ashx?iid=516&q=' + ma_truong + (
+                        'http://bacgiang.edu.vn/ssearch.ashx?iid=519&q=' + ma_truong + (
                                     '%03d' % (i + 1)) + '&pl=10').content
                     r_decode = rr.decode("utf-8")
                     print(r_decode)
