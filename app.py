@@ -44,7 +44,7 @@ def getdiem():
             wb = Workbook()
             ws = wb.active
             data = [
-                ["STT", "SBD", "HỌ VÀ TÊN", "NGÀY SINH", "UT", "KK", "VĂN", "ANH", "TOÁN", "TỔNG", "TỔNG UTK"]
+                ["STT", "SBD", "HỌ VÀ TÊN", "NGÀY SINH", "UT", "VĂN", "ANH", "TOÁN", "TỔNG"]
             ]
             ma_truong = str(matruong)
             max_std = int(sothisinh)
@@ -60,28 +60,26 @@ def getdiem():
                     sbd = str(data_r[0])
                     name = str(data_r[1])
                     dob = str(data_r[2])
-                    ut = str(data_r[3]).replace(",", ".")
-                    kk = str(data_r[4]).replace(",", ".")
-                    van = str(data_r[5]).replace(",", ".")
-                    anh = str(data_r[6]).replace(",", ".")
-                    toan = str(data_r[7]).replace(",", ".")
+                    kk = str(data_r[3]).replace(",", ".")
+                    van = str(data_r[4]).replace(",", ".")
+                    anh = str(data_r[5]).replace(",", ".")
+                    toan = str(data_r[6]).replace(",", ".")
                     tong = float(toan) * 2 + float(van) * 2 + float(anh)
-                    total = float(toan) * 2 + float(van) * 2 + float(anh) + float(ut) + float(kk)
-                    new_data = [stt, sbd, name, dob, ut, kk, van, toan, anh, tong, total]
+                    new_data = [stt, sbd, name, dob, kk, van, toan, anh, tong]
                     # print(new_data)
                     data.append(new_data)
                 except:
-                    new_data = [i + 1, "", "", "", "", "", "", "", "", "", ""]
+                    new_data = [i + 1, "", "", "", "", "", "", "", ""]
                     data.append(new_data)
 
             for r in data:
                 ws.append(r)
 
-            ws.auto_filter.ref = "A:K"
+            ws.auto_filter.ref = "A:I"
             ws.column_dimensions['B'].width = 8
             ws.column_dimensions['C'].width = 30
             ws.column_dimensions['D'].width = 18
-            ws.column_dimensions['K'].width = 13
+            ws.column_dimensions['I'].width = 13
             now = datetime.now()
             lte_time = now.strftime("%d-%m-%Y-%H_%M")
             filename = "file_diem/{}_{}.xlsx".format(ma_truong, lte_time)
