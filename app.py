@@ -44,7 +44,7 @@ def getdiem():
             wb = Workbook()
             ws = wb.active
             data = [
-                ["STT", "SBD", "HỌ VÀ TÊN", "NGÀY SINH", "UT", "VĂN", "ANH", "TOÁN", "TỔNG"]
+                ["STT", "SBD", "HỌ VÀ TÊN", "NGÀY SINH", "UT", "VĂN", "TOÁN", "ANH"]
             ]
             ma_truong = str(matruong)
             max_std = int(sothisinh)
@@ -64,12 +64,11 @@ def getdiem():
                     van = str(data_r[4]).replace(",", ".")
                     anh = str(data_r[5]).replace(",", ".")
                     toan = str(data_r[6]).replace(",", ".")
-                    tong = float(toan) * 2 + float(van) * 2 + float(anh)
-                    new_data = [stt, sbd, name, dob, kk, van, toan, anh, tong]
+                    new_data = [stt, sbd, name, dob, kk, van, toan, anh]
                     # print(new_data)
                     data.append(new_data)
                 except:
-                    new_data = [i + 1, "", "", "", "", "", "", "", ""]
+                    new_data = [i + 1, "", "", "", "", "", "", ""]
                     data.append(new_data)
 
             for r in data:
@@ -79,7 +78,7 @@ def getdiem():
             ws.column_dimensions['B'].width = 8
             ws.column_dimensions['C'].width = 30
             ws.column_dimensions['D'].width = 18
-            ws.column_dimensions['I'].width = 13
+            ws.column_dimensions['H'].width = 13
             now = datetime.now()
             lte_time = now.strftime("%d-%m-%Y-%H_%M")
             filename = "file_diem/{}_{}.xlsx".format(ma_truong, lte_time)
